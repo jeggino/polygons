@@ -48,7 +48,7 @@ INITIAL_VIEW_STATE = pdk.ViewState(
 
 
 
-r = pdk.Deck(layers=[layers],initial_view_state=INITIAL_VIEW_STATE)
+r = pdk.Deck(layers=[layers],initial_view_state=INITIAL_VIEW_STATE,map_style=pdk.map_styles.LIGHT,)
 
 st.pydeck_chart(r)
 
