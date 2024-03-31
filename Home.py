@@ -24,6 +24,8 @@ else:
 
   st.stop()
 
+gdf_polygon
+
 layers = [
  pdk.Layer(
      type = "GeoJsonLayer",
