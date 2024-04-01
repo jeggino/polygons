@@ -32,7 +32,7 @@ layers = [
      width_min_pixels=5,
      get_width=5,
      get_fill_color=[180, 0, 200, 140],
-     pickable=False,
+     pickable=True,
      ),
  ]
 
