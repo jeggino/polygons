@@ -13,8 +13,6 @@ import random
 from deta import Deta
 
 import pydeck as pdk
-import altair as alt
-
 
 uploaded_file = st.file_uploader("Choose a file")
 if uploaded_file is not None:
@@ -53,14 +51,6 @@ INITIAL_VIEW_STATE = pdk.ViewState(
 r = pdk.Deck(layers=[layers],initial_view_state=INITIAL_VIEW_STATE,map_style=pdk.map_styles.LIGHT,)
 
 st.pydeck_chart(r)
-
-map2 = alt.Chart(gdf_polygon).mark_geoshape(
-    stroke='white',
-    strokeWidth=2
-).encode(
-    color=alt.value('#eee'),
-)
-st.altair_chart(map2, use_container_width=False)
   
   
 
