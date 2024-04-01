@@ -44,7 +44,7 @@ INITIAL_VIEW_STATE = pdk.ViewState(
         zoom=11,
         min_zoom=5,
         max_zoom=15,
-        pitch=40.5,
+        pitch=0,
         bearing=0)
 
 
