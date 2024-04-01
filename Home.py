@@ -13,6 +13,7 @@ import random
 from deta import Deta
 
 import pydeck as pdk
+import altair as alt
 
 
 uploaded_file = st.file_uploader("Choose a file")
