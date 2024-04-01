@@ -53,6 +53,16 @@ r = pdk.Deck(layers=[layers],initial_view_state=INITIAL_VIEW_STATE,map_style=pdk
 
 st.pydeck_chart(r)
 
+regions = alt.topo_feature("https://raw.githubusercontent.com/deldersveld/topojson/master/countries/italy/italy-regions.json", 'ITA_adm1')
+
+map = alt.Chart(regions).mark_geoshape(
+    stroke='white',
+    strokeWidth=2
+).encode(
+    color=alt.value('#eee'),
+)
+st.altair_chart(map, use_container_width=False)
+
   
   
 
