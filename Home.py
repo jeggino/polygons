@@ -18,6 +18,8 @@ uploaded_file = st.file_uploader("Choose a file")
 if uploaded_file is not None:
 
   gdf_polygon = gpd.read_file(uploaded_file)
+  gdf_polygon= gdf_polygon.to_crs({'init': 'epsg:32633'})
+  gdf_polygon['Oppervlakte (m2)'] = gdf_polygon['geometry'].map(lambda x: round(x.area))
 
 else:
 
