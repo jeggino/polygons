@@ -26,8 +26,8 @@ else:
 
   st.stop()
 
-with st.expander("See explanation"):
-  st.dataframe(gdf_polygon.drop("geometry",axis=1),use_container_width=True,hide_index=True,)
+# with st.expander("See explanation"):
+#   st.dataframe(gdf_polygon.drop("geometry",axis=1),use_container_width=True,hide_index=True,)
 
 layers = [
  pdk.Layer(
