@@ -57,7 +57,7 @@ tooltip = {
 
 
 r = pdk.Deck(layers=[layers],initial_view_state=INITIAL_VIEW_STATE,tooltip=tooltip,
-              map_style=pdk.map_styles.ROADS)
+              map_style=pdk.map_styles.ROAD)
 
 
 st.pydeck_chart(r)
