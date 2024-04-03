@@ -47,9 +47,13 @@ INITIAL_VIEW_STATE = pdk.ViewState(
         pitch=0,
         bearing=0)
 
+tooltip = {
+    "html": "<b>Name: {Title}</b>,
+    "style": {"background": "grey", "color": "white", "font-family": '"Helvetica Neue", Arial', "z-index": "10000"},
+}
 
 
-r = pdk.Deck(layers=[layers],initial_view_state=INITIAL_VIEW_STATE,map_style=pdk.map_styles.LIGHT,)
+r = pdk.Deck(layers=[layers],initial_view_state=INITIAL_VIEW_STATE,map_style=pdk.map_styles.LIGHT,tooltip=tooltip,)
 
 st.pydeck_chart(r)
   
