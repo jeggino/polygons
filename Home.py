@@ -56,7 +56,11 @@ tooltip = {
 }
 
 
-r = pdk.Deck(layers=[layers],initial_view_state=INITIAL_VIEW_STATE,map_style=pdk.map_styles.SATELLITE,tooltip=tooltip)
+r = pdk.Deck(layers=[layers],initial_view_state=INITIAL_VIEW_STATE,tooltip=tooltip,
+              api_keys={"mapbox":"pk.eyJ1IjoiamVnZ2lubyIsImEiOiJjbDFlMTA3MmowMWV4M2h1Z2ZobWFmZDhvIn0.OYXDSrOZ5vWheUZ1nFSB_Q"},
+            map_provider='mapbox',
+            map_style ="mapbox://styles/jeggino/clieqivbp005e01pggw0e5zxh")
+
 
 st.pydeck_chart(r)
   
