@@ -46,8 +46,6 @@ INITIAL_VIEW_STATE = pdk.ViewState(
         latitude=gdf_polygon.centroid.y.mean(),
         longitude=gdf_polygon.centroid.x.mean(),
         zoom=11,
-        min_zoom=5,
-        max_zoom=15,
         pitch=0,
         bearing=0)
 
