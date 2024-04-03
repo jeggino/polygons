@@ -48,7 +48,7 @@ INITIAL_VIEW_STATE = pdk.ViewState(
         bearing=0)
 
 tooltip = {
-    "html": "<b>Name: {Title}</b>",
+    "html": "<b>{Area_name}</b>",
     "style": {"background": "grey", "color": "white", "font-family": '"Helvetica Neue", Arial', "z-index": "10000"},
 }
 
