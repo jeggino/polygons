@@ -18,8 +18,9 @@ uploaded_file = st.file_uploader("Choose a file")
 if uploaded_file is not None:
 
   gdf_polygon = gpd.read_file(uploaded_file)
-  gdf_polygon= gdf_polygon.to_crs({'init': 'epsg:32633'})
+  gdf_polygon = gdf_polygon.to_crs({'init': 'epsg:32633'})
   gdf_polygon['Oppervlakte (Km2)'] = gdf_polygon['geometry'].map(lambda x: round(x.area / 10**6))
+  gdf_polygon = gdf_polygon.to_crs({'init': 'epsg:4326'})
 
 else:
 
@@ -50,7 +51,7 @@ INITIAL_VIEW_STATE = pdk.ViewState(
         bearing=0)
 
 tooltip = {
-    "html": "<b>{naam} \nOppervlakte (Km2): {Oppervlakte (Km2)} \n {extras}</b>",
+    "html": "{naam} \nOppervlakte (Km2): {Oppervlakte (Km2)} \n {extras}",
     "style": {"background": "grey", "color": "white", "font-family": '"Helvetica Neue", Arial', "z-index": "10000"},
 }
 
