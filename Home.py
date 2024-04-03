@@ -52,7 +52,7 @@ INITIAL_VIEW_STATE = pdk.ViewState(
         bearing=0)
 
 tooltip = {
-    "text": "{naam} \nOppervlakte (Km2): {Oppervlakte (Km2)} \n{extras}",
+    "text": "{naam} \nOppervlakte (Km2): {Oppervlakte (Km2)} \nAanvullende informatie: {extras}",
     # "style": {"background": "grey", "color": "white", "font-family": '"Helvetica Neue", Arial', "z-index": "10000"},
 }
 
