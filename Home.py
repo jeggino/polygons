@@ -56,7 +56,7 @@ tooltip = {
 }
 
 
-r = pdk.Deck(layers=[layers],initial_view_state=INITIAL_VIEW_STATE,map_style=pdk.map_styles.LIGHT,tooltip=tooltip)
+r = pdk.Deck(layers=[layers],initial_view_state=INITIAL_VIEW_STATE,map_style=pdk.map_styles.SATELLITE,tooltip=tooltip)
 
 st.pydeck_chart(r)
   
