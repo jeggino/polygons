@@ -19,7 +19,7 @@ if uploaded_file is not None:
 
   gdf_polygon = gpd.read_file(uploaded_file)
   gdf_polygon = gdf_polygon.to_crs({'init': 'epsg:32633'})
-  gdf_polygon['Oppervlakte (Km2)'] = gdf_polygon['geometry'].map(lambda x: round(x.area / 10**6,2))
+  gdf_polygon['Oppervlakte (Km2)'] = gdf_polygon['geometry'].map(lambda x: round(x.area / 1**6,2))
   gdf_polygon = gdf_polygon.to_crs({'init': 'epsg:4326'})
 
 else:
