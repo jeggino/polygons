@@ -9,6 +9,14 @@ import folium
 from folium.plugins import Draw, Fullscreen, LocateControl
 from streamlit_folium import st_folium
 
+region_name = 'Terschelling' 
+
+region = ox.geocoder.geocode_to_gdf(region_name)
+buildings = ox.geometries.geometries_from_polygon(region['geometry'][0], tags = {'building': True})
+
+tost = buildings[buildings.index.isin(['way'], level=0)].iloc[:,:1]
+tost= tost.to_crs({'init': 'epsg:32633'})
+tost['Oppervlakte (m2)'] = tost['geometry'].map(lambda x: round(x.area))
 
 m = tost.explore(column='Oppervlakte (m2)',legend_kwds={'interval':True},k=5,scheme='Percentiles',cmap="Reds",  name="Afmeting gebouwen",legend=False,)
 m = df_pol.explore(m=m,column='Aantal gebouwen',legend_kwds={'interval':True},k=5,scheme='Percentiles',cmap="Reds",name="Gebouwendichtheid",legend=False)
