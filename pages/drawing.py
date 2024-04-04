@@ -1,3 +1,5 @@
+import streamlit as st
+
 import geopandas as gpd
 import osmnx as ox
 
@@ -10,7 +12,7 @@ from folium.plugins import Draw, Fullscreen, LocateControl
 from streamlit_folium import st_folium
 
 
-REGIONAL_NAME  = st.selectbox('How would you like to be contacted?',('Email', 'Home phone', 'Mobile phone'))
+REGIONAL_NAME  = st.selectbox('Chose a location',('Terschelling', 'Amsterdam'))
 
 region = ox.geocoder.geocode_to_gdf(REGIONAL_NAME)
 buildings = ox.geometries.geometries_from_polygon(region['geometry'][0], tags = {'building': True})
