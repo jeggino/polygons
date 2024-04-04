@@ -63,8 +63,6 @@ folium.plugins.MeasureControl(position="topleft").add_to(m)
 
 Fullscreen().add_to(m)
 
-m
-
-output = st_folium(m, returned_objects=["all_drawings"],width=OUTPUT_width, height=OUTPUT_height)
+output = st_folium(m,returned_objects=["all_drawings"])
 
 output
