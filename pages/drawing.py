@@ -54,7 +54,7 @@ m = df_pol.explore(m=m,column='Aantal gebouwen',legend_kwds={'interval':True},k=
 # folium.TileLayer(tiles="CartoDB Positron",overlay=False,show=False).add_to(m)
 folium.LayerControl().add_to(m)
 Draw(export=True,position="topleft",show_geometry_on_click=True,
-     draw_options={'marker': False, 'circle': False,'rectangle': False,'circlemarker': False, 'polyline': False, 'polygon': True,}
+     draw_options={'marker': True, 'circle': False,'rectangle': False,'circlemarker': False, 'polyline': False, 'polygon': True,}
     ).add_to(m)
 
 
