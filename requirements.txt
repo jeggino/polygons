@@ -7,3 +7,5 @@ streamlit-folium>=0.8.1
 geopandas
 h3
 osmnx
+matplotlib
+mapclassify
