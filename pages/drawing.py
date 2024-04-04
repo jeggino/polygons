@@ -9,23 +9,20 @@ import folium
 from folium.plugins import Draw, Fullscreen, LocateControl
 from streamlit_folium import st_folium
 
-region_name = 'Terschelling' 
+REGIONAL_NAME = ("Choose a location", ['Terschelling','Amsterdam' ], index=0, key=None, help=None, on_change=None, args=None, kwargs=None, placeholder="Choose an option", disabled=False, label_visibility="visible")
 
-region = ox.geocoder.geocode_to_gdf(region_name)
+region = ox.geocoder.geocode_to_gdf(REGIONAL_NAME)
 buildings = ox.geometries.geometries_from_polygon(region['geometry'][0], tags = {'building': True})
 
 tost = buildings[buildings.index.isin(['way'], level=0)].iloc[:,:1]
 tost= tost.to_crs({'init': 'epsg:32633'})
 tost['Oppervlakte (m2)'] = tost['geometry'].map(lambda x: round(x.area))
 
-# create exagons
-from h3 import h3
-from shapely.geometry import Polygon
 
-h3_level = 10 # ~6m2 area resolution
+H3_LEVEL = st.number_input("Insert a H3 resolution", min_value=3, max_value=12, value="min", step=1, format=None, key=None, help=None, on_change=None, args=None, kwargs=None, placeholder=None, disabled=False, label_visibility="visible")
  
 def lat_lng_to_h3(row):
-    return h3.geo_to_h3(row.centroid.y, row.centroid.x, h3_level)
+    return h3.geo_to_h3(row.centroid.y, row.centroid.x, H3_LEVEL)
 
 def add_geometry(row):
     points = h3.h3_to_geo_boundary(
