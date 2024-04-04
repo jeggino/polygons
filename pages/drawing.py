@@ -46,10 +46,10 @@ df_pol = gpd.GeoDataFrame(df_pol, crs='EPSG:4326')
 
 m = tost.explore(column='Oppervlakte (m2)',legend_kwds={'interval':True},k=5,scheme='Percentiles',cmap="Reds",  name="Afmeting gebouwen",legend=False,)
 m = df_pol.explore(m=m,column='Aantal gebouwen',legend_kwds={'interval':True},k=5,scheme='Percentiles',cmap="Reds",name="Gebouwendichtheid",legend=False)
-plugins.HeatMap(heat_data,name="Heat map",min_opacity=0.5,overlay=True,show=False,
-    max_zoom=18,
-    radius=10,
-    blur=10,).add_to(m)
+# plugins.HeatMap(heat_data,name="Heat map",min_opacity=0.5,overlay=True,show=False,
+#     max_zoom=18,
+#     radius=10,
+#     blur=10,).add_to(m)
 
 folium.TileLayer(tiles="CartoDB Positron",overlay=False,show=False).add_to(m)
 folium.LayerControl().add_to(m)
