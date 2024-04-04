@@ -9,7 +9,7 @@ import folium
 from folium.plugins import Draw, Fullscreen, LocateControl
 from streamlit_folium import st_folium
 
-REGIONAL_NAME = st.selectbox("Choose a location", ['Terschelling','Amsterdam' ])
+REGIONAL_NAME = st.selectbox("Choose a location", ('Terschelling','Amsterdam' ))
 
 region = ox.geocoder.geocode_to_gdf(REGIONAL_NAME)
 buildings = ox.geometries.geometries_from_polygon(region['geometry'][0], tags = {'building': True})
