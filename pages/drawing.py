@@ -9,7 +9,7 @@ import folium
 from folium.plugins import Draw, Fullscreen, LocateControl
 from streamlit_folium import st_folium
 
-REGIONAL_NAME = ("Choose a location", ['Terschelling','Amsterdam' ], index=0, key=None, help=None, on_change=None, args=None, kwargs=None, placeholder="Choose an option", disabled=False, label_visibility="visible")
+REGIONAL_NAME = st.selectbox("Choose a location", ['Terschelling','Amsterdam' ])
 
 region = ox.geocoder.geocode_to_gdf(REGIONAL_NAME)
 buildings = ox.geometries.geometries_from_polygon(region['geometry'][0], tags = {'building': True})
@@ -19,7 +19,7 @@ tost= tost.to_crs({'init': 'epsg:32633'})
 tost['Oppervlakte (m2)'] = tost['geometry'].map(lambda x: round(x.area))
 
 
-H3_LEVEL = st.number_input("Insert a H3 resolution", min_value=3, max_value=12, value="min", step=1, format=None, key=None, help=None, on_change=None, args=None, kwargs=None, placeholder=None, disabled=False, label_visibility="visible")
+H3_LEVEL = st.number_input("Insert a H3 resolution", min_value=3, max_value=12, value="min", step=1)
  
 def lat_lng_to_h3(row):
     return h3.geo_to_h3(row.centroid.y, row.centroid.x, H3_LEVEL)
