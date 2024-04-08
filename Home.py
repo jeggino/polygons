@@ -64,7 +64,7 @@ db = deta.Base("df_polygons")
 
 def insert_json(naam,opmerking,geometry_type,coordinates):
 
-    return db.put({"naam":naam,"opmerking":opmerking,"geometry_type":geometry_type, "coordinates":coordinates})
+    return db.put({"naam":naam,"opmerking":opmerking,"geometry_type":geometry_type, "coordinates":coordinates,"geojson",geojson})
 
 
 
@@ -80,16 +80,20 @@ output
 
 output["features"] = output.pop("all_drawings")
 geometry_type = output["features"][0]["geometry"]["type"]
-coordinates = [output["features"][0]["geometry"]["coordinates"]]
+coordinates = output["features"][0]["geometry"]["coordinates"]
 naam = st.text_input("", placeholder="Vul hier een naam in ...")
 opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
+
+output["features"][0]["properties"]["naam"] = naam
+output["features"][0]["properties"]["opmerking"] = opmerking
+geojson = output["features"][0]["properties"]
 
 
 submitted = st.button("Gegevens opslaan")
   
 if submitted:
   
-  insert_json(naam,opmerking,geometry_type,coordinates)
+  insert_json(naam,opmerking,geometry_type,coordinates,geojson)
 
 try:
   
