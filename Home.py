@@ -80,7 +80,7 @@ output
 
 output["features"] = output.pop("all_drawings")
 geometry_type = output["features"][0]["geometry"]["type"]
-coordinates = output["features"][0]["geometry"]["coordinates"]
+coordinates = [output["features"][0]["geometry"]["coordinates"]]
 naam = st.text_input("", placeholder="Vul hier een naam in ...")
 opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
 
