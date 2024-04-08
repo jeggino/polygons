@@ -62,9 +62,9 @@ from deta import Deta
 deta = Deta("a0hz4ythxni_TNmhLV3CVtzR7a5PJ3gxADVeqPJQe9dc")
 db = deta.Base("df_polygons")
 
-def insert_json(key,naam,opmerking,geometry_type,coordinates):
+def insert_json(naam,opmerking,geometry_type,coordinates):
 
-    return db.put({"key":key, "naam":naam,"opmerking":opmerking,"geometry_type":geometry_type, "coordinates":coordinates})
+    return db.put({"naam":naam,"opmerking":opmerking,"geometry_type":geometry_type, "coordinates":coordinates})
 
 
 
@@ -94,7 +94,7 @@ if submitted:
     st.warning("no good")
     st.stop()
 
-insert_json()
+insert_json(naam,opmerking,geometry_type,coordinates)
 
 db_content = db.fetch().items
 df_point = pd.DataFrame(db_content)
