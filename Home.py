@@ -76,6 +76,7 @@ LocateControl(auto_start=True).add_to(m)
 
 
 output = st_folium(m, returned_objects=["all_drawings"])
+output
 
 output["features"] = output.pop("all_drawings")
 geometry_type = output["features"][0]["geometry"]["type"]
