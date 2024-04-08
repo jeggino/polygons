@@ -94,10 +94,13 @@ try:
   db_content = db.fetch().items
   df_point = pd.DataFrame(db_content)
   
+  
 except:
   
   st.warning("Npo data")
+  st.stop()
 
+df_point
 
 
 
