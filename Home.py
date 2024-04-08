@@ -60,7 +60,11 @@ Draw(draw_options={'marker':False,'circle': False,'rectangle': False,'circlemark
 Fullscreen().add_to(m)
 LocateControl(auto_start=True).add_to(m)
 
-st_folium(m, returned_objects=["all_drawings"],width=OUTPUT_width, height=OUTPUT_height)
+OUTPUT = st_folium(m, returned_objects=["all_drawings"])
+
+
+OUTPUT
+
   
   
 
