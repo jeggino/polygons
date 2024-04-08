@@ -111,6 +111,7 @@ df_point
 
 import json
 s = df_point.geojson[0]
+s
 json_acceptable_string = s.replace("'", "\"")
 d = json.loads(json_acceptable_string)
 gdf_polygon_2 = gpd.GeoDataFrame(d)
