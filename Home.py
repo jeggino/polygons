@@ -86,7 +86,7 @@ opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
 
 output["features"][0]["properties"]["naam"] = naam
 output["features"][0]["properties"]["opmerking"] = opmerking
-geojson = output
+geojson = output["features"][0]
 
 submitted = st.button("Gegevens opslaan")
   
