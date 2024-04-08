@@ -76,35 +76,22 @@ LocateControl(auto_start=True).add_to(m)
 
 
 output = st_folium(m, returned_objects=["all_drawings"])
+output["features"] = output.pop("all_drawings")
+geometry_type = output["features"][0]["geometry"]["type"]
+coordinates = output["features"][0]["geometry"]["coordinates"]
+naam = st.text_input("", placeholder="Vul hier een naam in ...")
+opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
 
-try: 
-  submitted = st.button("Gegevens opslaan")
+
+submitted = st.button("Gegevens opslaan")
   
   if submitted:
   
-    try:
-  
-      output["features"] = output.pop("all_drawings")
-      geometry_type = output["features"][0]["geometry"]["type"]
-      coordinates = output["features"][0]["geometry"]["coordinates"]
-      naam = st.text_input("", placeholder="Vul hier een naam in ...")
-      opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
-  
-    except:
-  
-      st.warning("no good")
-      st.stop()
-  
-  output
-  
   insert_json(naam,opmerking,geometry_type,coordinates)
   
-  db_content = db.fetch().items
-  df_point = pd.DataFrame(db_content)
+db_content = db.fetch().items
+df_point = pd.DataFrame(db_content)
 
-except:
-
-  st.warning("first error")
 
 
 
