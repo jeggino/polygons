@@ -94,6 +94,8 @@ if submitted:
     st.warning("no good")
     st.stop()
 
+output
+
 insert_json(naam,opmerking,geometry_type,coordinates)
 
 db_content = db.fetch().items
