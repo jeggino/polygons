@@ -1,5 +1,5 @@
 import streamlit as st
-
+import pandas as pd
 
 import geopandas as gpd
 import pydeck as pdk
@@ -88,9 +88,15 @@ submitted = st.button("Gegevens opslaan")
 if submitted:
   
   insert_json(naam,opmerking,geometry_type,coordinates)
+
+try:
   
-db_content = db.fetch().items
-df_point = pd.DataFrame(db_content)
+  db_content = db.fetch().items
+  df_point = pd.DataFrame(db_content)
+  
+except:
+  
+  st.warning("Npo data")
 
 
 
