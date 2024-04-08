@@ -76,7 +76,9 @@ LocateControl(auto_start=True).add_to(m)
 
 
 output = st_folium(m, returned_objects=["all_drawings"])
+
 output["features"] = output.pop("all_drawings")
+output
 geometry_type = output["features"][0]["geometry"]["type"]
 coordinates = output["features"][0]["geometry"]["coordinates"]
 naam = st.text_input("", placeholder="Vul hier een naam in ...")
@@ -104,7 +106,7 @@ df_point
 
 "---"
 
-gdf_polygon = gpd.GeoDataFrame(db_content,geometry="coordinates")
+gdf_polygon = gpd.GeoDataFrame(db_content)
 gdf_polygon = gdf_polygon.to_crs({'init': 'epsg:32633'})
 gdf_polygon['Oppervlakte (Km2)'] = gdf_polygon['coordinates'].map(lambda x: round(x.area / 10**6,2))
 gdf_polygon = gdf_polygon.to_crs({'init': 'epsg:4326'})
