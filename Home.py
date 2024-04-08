@@ -62,7 +62,7 @@ from deta import Deta
 deta = Deta("a0hz4ythxni_TNmhLV3CVtzR7a5PJ3gxADVeqPJQe9dc")
 db = deta.Base("df_polygons")
 
-def insert_json(naam,opmerking,geometry_type,coordinates):
+def insert_json(naam,opmerking,geometry_type,coordinates,geojson):
 
     return db.put({"naam":naam,"opmerking":opmerking,"geometry_type":geometry_type, "coordinates":coordinates,"geojson":geojson})
 
