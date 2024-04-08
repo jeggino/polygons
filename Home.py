@@ -85,7 +85,7 @@ opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
 
 submitted = st.button("Gegevens opslaan")
   
-  if submitted:
+if submitted:
   
   insert_json(naam,opmerking,geometry_type,coordinates)
   
