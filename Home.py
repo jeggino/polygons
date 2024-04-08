@@ -64,7 +64,7 @@ db = deta.Base("df_polygons")
 
 def insert_json(key,naam,opmerking,geometry_type,coordinates):
 
-    return db.put({"key":key, "naam":naam,"opmerking":opmerking,"geometry_type":geometry_type, "coordinates":coordinates)
+    return db.put({"key":key, "naam":naam,"opmerking":opmerking,"geometry_type":geometry_type, "coordinates":coordinates})
 
 
 
