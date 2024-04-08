@@ -49,6 +49,18 @@ r = pdk.Deck(layers=[layers],initial_view_state=INITIAL_VIEW_STATE,tooltip=toolt
 
 
 st.pydeck_chart(r)
+
+"---"
+import folium
+from folium.plugins import Draw, Fullscreen, LocateControl
+from streamlit_folium import st_folium
+
+m = folium.Map()
+Draw(draw_options={'marker':False,'circle': False,'rectangle': False,'circlemarker': False, 'polyline': False, 'polygon': True,}).add_to(m)
+Fullscreen().add_to(m)
+LocateControl(auto_start=True).add_to(m)
+
+st_folium(m, returned_objects=["all_drawings"],width=OUTPUT_width, height=OUTPUT_height)
   
   
 
