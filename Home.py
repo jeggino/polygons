@@ -55,15 +55,53 @@ import folium
 from folium.plugins import Draw, Fullscreen, LocateControl
 from streamlit_folium import st_folium
 
+from deta import Deta
+
+# --- CONNECT TO DETA ---
+# deta = Deta(st.secrets["deta_key"])
+deta = Deta("a0hz4ythxni_TNmhLV3CVtzR7a5PJ3gxADVeqPJQe9dc")
+db = deta.Base("df_polygons")
+
+def insert_json(key,naam,opmerking,geometry_type,coordinates):
+
+    return db.put({"key":key, "naam":naam,"opmerking":opmerking,"geometry_type":geometry_type, "coordinates":coordinates)
+
+
+
 m = folium.Map()
 Draw(draw_options={'marker':False,'circle': False,'rectangle': False,'circlemarker': False, 'polyline': False, 'polygon': True,}).add_to(m)
 Fullscreen().add_to(m)
 LocateControl(auto_start=True).add_to(m)
 
-OUTPUT = st_folium(m, returned_objects=["all_drawings"])
 
 
-OUTPUT
+output = st_folium(m, returned_objects=["all_drawings"])
+
+submitted = popover.button("Gegevens opslaan")
+
+if submitted:
+
+  try:
+
+    output["features"] = output.pop("all_drawings")
+    geometry_type = output["features"][0]["geometry"]["type"]
+    coordinates = output["features"][0]["geometry"]["coordinates"]
+    naam = st.text_input("", placeholder="Vul hier een naam in ...")
+    opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
+
+  except:
+
+    st.warning("no good")
+    st.stop()
+
+insert_json()
+
+db_content = db.fetch().items
+df_point = pd.DataFrame(db_content)
+
+
+
+
 
   
   
