@@ -102,6 +102,46 @@ except:
 
 df_point
 
+"---"
+
+gdf_polygon = gpd.GeoDataFrame(db_content,geometry="coordinates")
+gdf_polygon = gdf_polygon.to_crs({'init': 'epsg:32633'})
+gdf_polygon['Oppervlakte (Km2)'] = gdf_polygon['coordinates'].map(lambda x: round(x.area / 10**6,2))
+gdf_polygon = gdf_polygon.to_crs({'init': 'epsg:4326'})
+
+
+
+
+layers = [
+ pdk.Layer(
+     type = "GeoJsonLayer",
+     data=gdf_polygon,
+     width_scale=20,
+     width_min_pixels=5,
+     get_width=5,
+     get_fill_color=[180, 0, 200, 140],
+     pickable=True,
+     ),
+ ]
+
+
+INITIAL_VIEW_STATE = pdk.ViewState(
+
+        zoom=11,
+        pitch=0,
+        bearing=0)
+
+tooltip = {
+    "text": "{naam} \nOppervlakte (Km2): {Oppervlakte (Km2)} \nAanvullende informatie: {opmerking}",
+}
+
+
+r = pdk.Deck(layers=[layers],initial_view_state=INITIAL_VIEW_STATE,tooltip=tooltip,
+              map_style=pdk.map_styles.ROAD)
+
+
+st.pydeck_chart(r)
+
 
 
 
