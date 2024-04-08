@@ -111,7 +111,7 @@ df_point
 from shapely.geometry import Polygon
 
 gdf_polygon_2 = gpd.GeoDataFrame(db_content)
-gdf_polygon_2 = gpd.read_file(db_content{"geometry"])
+gdf_polygon_2 = gpd.read_file(db_content["geometry"])
 gdf_polygon_2 = gdf_polygon_2.set_geometry("geometry")
 gdf_polygon_2 = gdf_polygon_2.to_crs({'init': 'epsg:32633'})
 gdf_polygon_2['Oppervlakte (Km2)'] = gdf_polygon_2['geometry'].map(lambda x: round(x.area / 10**6,2))
