@@ -90,22 +90,22 @@ geojson = output["features"][0]
 
 submitted = st.button("Gegevens opslaan")
   
-if submitted:
+# if submitted:
   
-  insert_json(naam,opmerking,geometry_type,coordinates,geojson)
+#   insert_json(naam,opmerking,geometry_type,coordinates,geojson)
 
-try:
+# try:
   
-  db_content = db.fetch().items
-  df_point = pd.DataFrame(db_content)
+#   db_content = db.fetch().items
+#   df_point = pd.DataFrame(db_content)
   
   
-except:
+# except:
   
-  st.warning("Npo data")
-  st.stop()
+#   st.warning("Npo data")
+#   st.stop()
 
-df_point
+# df_point
 
 "---"
 
