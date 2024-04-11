@@ -9,3 +9,4 @@ h3
 osmnx
 matplotlib
 mapclassify
+sqlalchemy
