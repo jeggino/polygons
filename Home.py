@@ -76,19 +76,19 @@ LocateControl(auto_start=True).add_to(m)
 
 
 output = st_folium(m, returned_objects=["all_drawings"])
-output
+# output
 
-output["features"] = output.pop("all_drawings")
-geometry_type = output["features"][0]["geometry"]["type"]
-coordinates = output["features"][0]["geometry"]["coordinates"]
-naam = st.text_input("", placeholder="Vul hier een naam in ...")
-opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
+# output["features"] = output.pop("all_drawings")
+# geometry_type = output["features"][0]["geometry"]["type"]
+# coordinates = output["features"][0]["geometry"]["coordinates"]
+# naam = st.text_input("", placeholder="Vul hier een naam in ...")
+# opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
 
-output["features"][0]["properties"]["naam"] = naam
-output["features"][0]["properties"]["opmerking"] = opmerking
-geojson = output["features"][0]
+# output["features"][0]["properties"]["naam"] = naam
+# output["features"][0]["properties"]["opmerking"] = opmerking
+# geojson = output["features"][0]
 
-submitted = st.button("Gegevens opslaan")
+# submitted = st.button("Gegevens opslaan")
   
 # if submitted:
   
@@ -109,49 +109,49 @@ submitted = st.button("Gegevens opslaan")
 
 "---"
 
-import json
-s = df_point.geojson[0]
-s
-json_acceptable_string = s.replace("'", "\"")
-d = json.loads(json_acceptable_string)
-gdf_polygon_2 = gpd.GeoDataFrame(d)
-gdf_polygon_2 = gdf_polygon_2.set_geometry("geometry")
-gdf_polygon_2 = gdf_polygon_2.to_crs({'init': 'epsg:32633'})
-gdf_polygon_2['Oppervlakte (Km2)'] = gdf_polygon_2['geometry'].map(lambda x: round(x.area / 10**6,2))
-gdf_polygon_2 = gdf_polygon_2.to_crs({'init': 'epsg:4326'})
+# import json
+# s = df_point.geojson[0]
+# s
+# json_acceptable_string = s.replace("'", "\"")
+# d = json.loads(json_acceptable_string)
+# gdf_polygon_2 = gpd.GeoDataFrame(d)
+# gdf_polygon_2 = gdf_polygon_2.set_geometry("geometry")
+# gdf_polygon_2 = gdf_polygon_2.to_crs({'init': 'epsg:32633'})
+# gdf_polygon_2['Oppervlakte (Km2)'] = gdf_polygon_2['geometry'].map(lambda x: round(x.area / 10**6,2))
+# gdf_polygon_2 = gdf_polygon_2.to_crs({'init': 'epsg:4326'})
 
 
 
 
-layers = [
- pdk.Layer(
-     type = "GeoJsonLayer",
-     data=gdf_polygon_2,
-     width_scale=20,
-     width_min_pixels=5,
-     get_width=5,
-     get_fill_color=[180, 0, 200, 140],
-     pickable=True,
-     ),
- ]
+# layers = [
+#  pdk.Layer(
+#      type = "GeoJsonLayer",
+#      data=gdf_polygon_2,
+#      width_scale=20,
+#      width_min_pixels=5,
+#      get_width=5,
+#      get_fill_color=[180, 0, 200, 140],
+#      pickable=True,
+#      ),
+#  ]
 
 
-INITIAL_VIEW_STATE = pdk.ViewState(
+# INITIAL_VIEW_STATE = pdk.ViewState(
 
-        zoom=11,
-        pitch=0,
-        bearing=0)
+#         zoom=11,
+#         pitch=0,
+#         bearing=0)
 
-tooltip = {
-    "text": "{naam} \nOppervlakte (Km2): {Oppervlakte (Km2)} \nAanvullende informatie: {opmerking}",
-}
-
-
-r = pdk.Deck(layers=[layers],initial_view_state=INITIAL_VIEW_STATE,tooltip=tooltip,
-              map_style=pdk.map_styles.ROAD)
+# tooltip = {
+#     "text": "{naam} \nOppervlakte (Km2): {Oppervlakte (Km2)} \nAanvullende informatie: {opmerking}",
+# }
 
 
-st.pydeck_chart(r)
+# r = pdk.Deck(layers=[layers],initial_view_state=INITIAL_VIEW_STATE,tooltip=tooltip,
+#               map_style=pdk.map_styles.ROAD)
+
+
+# st.pydeck_chart(r)
 
 "---"
 
