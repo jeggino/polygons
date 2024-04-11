@@ -10,3 +10,4 @@ osmnx
 matplotlib
 mapclassify
 sqlalchemy
+ebird
