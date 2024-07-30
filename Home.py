@@ -20,10 +20,11 @@ layers = [
  pdk.Layer(
      type = "GeoJsonLayer",
      data=gdf_polygon,
-     width_scale=20,
+     width_scale=10,
      width_min_pixels=5,
-     get_width=5,
-     get_fill_color=[180, 0, 200, 140],
+     get_width=2,
+     stroke=False,
+     get_fill_color=[0, 200, 140],
      pickable=True,
      ),
  ]
